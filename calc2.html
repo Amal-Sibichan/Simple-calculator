@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+ 
+<style>
+     form{
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+    }
+    .container {
+      background-color:#acd4ed;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 6px 6px 5px rgba(0, 0, 0, 0.551);
+      width: 300px;
+      
+    }
+    nav{
+        background-color:#acd4ed;
+        box-shadow: 6px 6px 5px;
+    }
+    body{
+      background: linear-gradient(to bottom,skyblue,lavender);
+    }
+    #btns{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+        gap:10px;
+        -webkit-text-fill-color: black;
+        
+    }
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg " >
+        <div class="container-fluid mt-3">
+            <ul class="navbar-nav">
+                <li class="nav-item me-3"><a href="#"></a></li><br>
+                <li class="nav-item"><a href="#"></a>
+                </li>
+            </ul>
+        </div>
+        </nav>
+<form id="form">
+    <div class=" container ">
+     
+         <input type="text" class="form-control  " id="out" placeholder="...." ><br>
+         <div id="btns">
+         <button class="btn btn-primary charButton" type="button"  value="7" onclick="display('7')">7</button>
+         <button class="btn btn-primary charButton" type="button"  value="8" onclick="display('8')">8</button>
+         <button class="btn btn-primary charButton" type="button" value="9" onclick="display('9')">9</button>
+         <button class="btn btn-success" type="button" id="=" value="=" onclick="calc()">=</button>
+         <button class="btn btn-danger" type="button" id="delet" onclick="empty()">DEL</button>
+         <button class="btn btn-primary charButton" type="button" value="4" onclick="display('4')">4</button>
+         <button class="btn btn-primary charButton" type="button" value="5" onclick="display('5')">5</button>
+         <button class="btn btn-primary charButton" type="button" value="6" onclick="display('6')">6</button>
+         <button class="btn btn-secondary charButton" type="button" value="*" onclick="display('*')" >X</button>
+         <button class="btn btn-secondary charButton" type="button" value="/" onclick="display('/')">/</button>
+         <button class="btn btn-primary charButton" type="button" value="1" onclick="display('1')">1</button>
+         <button class="btn btn-primary charButton" type="button" value="2" onclick="display('2')">2</button>
+         <button class="btn btn-primary charButton" type="button" value="3" onclick="display('3')">3</button>
+          <button class="btn btn-secondary charButton" type="button" value="+" onclick="display('+')">+</button>
+          <button class="btn btn-secondary charButton" type="button" value="-" onclick="display('-')">-</button>
+          <button class="btn btn-primary charButton" type="button" value="0" onclick="display('0')">0</button>
+          <button class="btn btn-primary charButton" type="button" value="." onclick="display('.')">.</button>
+         
+        </div>
+         
+    </div>
+</form>
+<script>
+  function display(val){
+    document.getElementById("out").value+=val
+    return val
+
+  }
+  function calc(){
+    let s=document.getElementById("out").value;
+    const l=['+','-','*','/','%'];
+    let b="";
+    let a="";
+    let op="";
+   
+    for (let i in s){
+      if (l.includes(s[i])){
+        
+            op=s[i];
+            a=b;
+            b="";
+        }
+        else{
+          b=b+s[i];
+        }
+    }
+    let n1=parseInt(a);
+    let n2=parseInt(b);
+    if(op === "+"){
+      let res=n1+n2;
+      document.getElementById("out").value=res;
+    }
+    else if(op === "-"){
+      let res=n1-n2;
+      document.getElementById("out").value=res;
+
+    }
+    else if(op === "*"){
+      let res=n1*n2;
+      document.getElementById("out").value=res;
+    }
+    else if(op === "/"){
+      let res=n1/n2;
+      document.getElementById("out").value=res;
+
+    }
+    
+
+  }
+
+  function empty(){
+    document.getElementById("out").value="";
+  }
+  
+</script>
+
+</body>
+</html>
